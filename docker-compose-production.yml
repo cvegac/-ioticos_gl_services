@@ -19,7 +19,6 @@ services:
       - "3001:3001"
       - "80:3002"
     links:
-      - emqx
       - mongo
 
     command: sh -c "node index.js"
