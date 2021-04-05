@@ -24,7 +24,7 @@ services:
       - emqx
       - mongo
 
-    command: sh -c "npm run start"
+    command: sh -c "npm run dev"
 
   mongo:
     container_name: mongo
