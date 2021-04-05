@@ -14,7 +14,7 @@ services:
     image: "node:14"
     working_dir: /home/node/app
     volumes:
-      - ./mycode/index.js:/home/node/app/index.js
+      - ./app/:/home/node/app
     ports:
       - "3000:3000"
       - "3001:3001"
