@@ -139,7 +139,7 @@ random_str=$(rand-str 20)
 printf "\n\n🔐 Necesitamos crear la clave del superusuario MQTT \n"
 while [[ -z "$EMQX_NODE_SUPERUSER_PASSWORD" ]]
 do
-  read -p "   MQTT Superuser Name $(tput setaf 128)(${random_str})$(tput setaf 7): "  EMQX_NODE_SUPERUSER_PASSWORD
+  read -p "   MQTT Superuser Password $(tput setaf 128)(${random_str})$(tput setaf 7): "  EMQX_NODE_SUPERUSER_PASSWORD
   EMQX_NODE_SUPERUSER_PASSWORD=${EMQX_NODE_SUPERUSER_PASSWORD:-${random_str}}
   echo "      Selected MQTT Superuser Password ► ${EMQX_NODE_SUPERUSER_PASSWORD} ✅"
 done
@@ -249,6 +249,7 @@ printf "   🟢 TIMEZONE: $(tput setaf 128)${TZ}$(tput setaf 7)\n"
 printf "   🟢 MONGO USER: $(tput setaf 128)${MONGO_USERNAME}$(tput setaf 7)\n"
 printf "   🟢 MONGO PASS: $(tput setaf 128)${MONGO_PASSWORD}$(tput setaf 7)\n"
 printf "   🟢 MONGO PORT: $(tput setaf 128)${MONGO_PORT}$(tput setaf 7)\n"
+printf "   🟢 EMQX PASSWORD DASSBOARD: $(tput setaf 128)${EMQX_DEFAULT_USER_PASSWORD}$(tput setaf 7)\n"
 printf "   🟢 EMQX API PASSWORD: $(tput setaf 128)${EMQX_DEFAULT_APPLICATION_SECRET}$(tput setaf 7)\n"
 printf "   🟢 MQTT SUPERUSER: $(tput setaf 128)${EMQX_NODE_SUPERUSER_USER}$(tput setaf 7)\n"
 printf "   🟢 MQTT SUPER PASS: $(tput setaf 128)${EMQX_NODE_SUPERUSER_PASSWORD}$(tput setaf 7)\n"
@@ -271,10 +272,10 @@ sudo rm install_docker.sh
 sudo curl -L "https://github.com/docker/compose/releases/download/1.28.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 sudo git clone https://github.com/cvegac/ioticos_gl_services.git
-sudo mv iotcr_services iotcrv2
+sudo mv ioticos_gl_services services
 
 
-cd iotcrv2
+cd services
 
 ## ______________________________
 ## INSALL INIT
@@ -298,7 +299,7 @@ sudo sh -c " echo 'EMQX_DEFAULT_APPLICATION_SECRET=${EMQX_DEFAULT_APPLICATION_SE
 
 
 sudo git clone https://github.com/cvegac/ioticos_gl_app.git
-sudo mv iotcr_app  app
+sudo mv ioticos_gl_app  app
 
 cd app
 
